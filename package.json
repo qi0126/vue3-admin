@@ -1,0 +1,39 @@
+{
+  "name": "vue3-admin",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.1.4",
+    "animate.css": "^4.1.1",
+    "ant-design-vue": "^2.2.0-beta.1",
+    "autoprefixer": "9",
+    "axios": "^0.21.1",
+    "echarts": "^5.1.0",
+    "element-plus": "^1.0.2-beta.40",
+    "js-cookie": "^2.2.1",
+    "naive-ui": "^2.11.4",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "path-browserify": "^1.0.1",
+    "path-to-regexp": "^6.2.0",
+    "postcss": "7",
+    "qrcanvas": "^3.1.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "vant": "^3.0.18",
+    "vue": "^3.0.5",
+    "vue-qart": "^2.2.0",
+    "vue-router": "^4.0.6",
+    "vuex": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "pont-engine": "1.0.13",
+    "sass": "^1.32.8",
+    "vite": "^2.1.5"
+  }
+}

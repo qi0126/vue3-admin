@@ -1,0 +1,15 @@
+.el-input {
+  width: 220px;
+}
+
+.el-select {
+  width: 220px;
+}
+
+.el-date-editor--daterange.el-input__inner {
+  width: 220px;
+}
+
+.el-divider--horizontal {
+  margin: 60px 0;
+}

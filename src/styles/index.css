@@ -1,0 +1,69 @@
+:export {
+  menuText: #bfcbd9;
+  menuActiveText: #409EFF;
+  subMenuActiveText: #f4f4f5;
+  menuBg: #304156;
+  menuHover: #263445;
+  subMenuBg: #1f2d3d;
+  subMenuHover: #001528;
+  sideBarWidth: 210px;
+}
+
+#app {
+  color: #2c3e50;
+  min-width: 1360px;
+}
+
+#app a:focus,
+#app a:active {
+  color: #444;
+}
+
+#app a,
+#app a:focus,
+#app a:hover,
+#app a:active {
+  cursor: pointer;
+  color: #444;
+  text-decoration: none;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  outline: none;
+}
+
+button {
+  border: none;
+  outline: 0 !important;
+}
+
+input,
+textarea {
+  font-size: 24px;
+  padding: 10px;
+  color: red;
+  text-shadow: 0px 0px 0px #000;
+  -webkit-text-fill-color: transparent;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: red;
+  text-shadow: none;
+  -webkit-text-fill-color: initial;
+}
+
+/*! @import */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
