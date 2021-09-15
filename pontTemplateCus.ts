@@ -1,11 +1,43 @@
-import { Interface, BaseClass, Property, CodeGenerator, Surrounding } from 'pont-engine';
+import { CodeGenerator, Interface } from "pont-engine"
+
+class Utils {
+	// 获取multipart/form-data params中的参数
+	getFormDataParams(parameters) {
+		let paramsStr: String = ""
+		parameters.forEach(item => {
+			// console.log(item)
+			let attrCode = ``
+			let name = item.name
+			let required = `?:`
+			let type = `${item.dataType.typeName};\n`
+			if (item.required === true) {
+				required = `:`
+			}
+			if (item.in === "formData") {
+				type = `FormData;\n`
+			}
+			attrCode = `${name}${required}${type} `
+			paramsStr += attrCode
+		})
+		return `class Params {\n \n ${paramsStr}}\n `
+	}
+
+	// 获取formdata中的数据
+}
+
+const utils = new Utils()
 
 export default class MyGenerator extends CodeGenerator {
-  getInterfaceContentInDeclaration(inter: Interface) {
-    const requestParams = inter.getRequestParams();
-    const paramsCode = inter.getParamsCode('Params');
+	getInterfaceContentInDeclaration(inter: Interface) {
+		const requestParams = inter.getRequestParams()
+		let paramsCode = inter.getParamsCode("Params")
+		const method = inter.method.toUpperCase()
+		let firstConsumes = inter.consumes ? inter.consumes[0] : ""
+		if (method === "POST" && firstConsumes === "multipart/form-data") {
+			paramsCode = utils.getFormDataParams(inter.parameters)
+		}
 
-    return `
+		return `
       export ${paramsCode}
 
       export type Response = ${inter.responseType}
@@ -13,45 +45,40 @@ export default class MyGenerator extends CodeGenerator {
       export const init: Response;
 
       export function request(${requestParams}): Promise<Response>;
-    `;
-  }
+    `
+	}
 
-  getBaseClassInDeclaration(base: BaseClass) {
-    const originProps = base.properties;
+	// 生成接口文件
+	getInterfaceContent(inter: Interface) {
+		const paramsCode = inter.getParamsCode()
+		const bodyParamsCode = inter.getBodyParamsCode()
+		const method = inter.method.toUpperCase()
+		let requestParams = bodyParamsCode ? `bodyParams = {}` : `params = {}`
+		let firstConsumes = inter.consumes ? inter.consumes[0] : ""
+		let httpMethod = "get"
+		if (method === "GET") {
+			httpMethod = "get"
+		}
+		if (method === "POST" && !bodyParamsCode) {
+			httpMethod = "post"
+		}
+		if (method === "POST" && bodyParamsCode) {
+			httpMethod = "postJson"
+		}
+		if (method === "POST" && firstConsumes === "multipart/form-data") {
+			httpMethod = "upload"
+		}
+		return `
+      /**
+      * @description ${inter.description}
+      */
 
-    base.properties = base.properties.map(prop => {
-      return new Property({
-        ...prop,
-        required: false
-      });
-    });
+     import http from '@/api/http.tsx';
 
-    const result = super.getBaseClassInDeclaration(base);
-    base.properties = originProps;
+     export function request(params) {
+       return http.${httpMethod}("${inter.path}", params);
+     }
 
-    return result;
-  }
-
-  getInterfaceContent(inter: Interface) {
-    const method = inter.method.toUpperCase();
-    const requestParams = inter.getRequestParams(this.surrounding);
-    const paramsCode = inter.getParamsCode('Params', this.surrounding);
-
-    return `
-    /**
-     * @desc ${inter.description}
-     */
-
-    import * as defs from '../../baseClass';
-    import { PontCore } from '../../pontCore';
-
-    export ${paramsCode}
-
-    export const init = ${inter.response.getInitialValue()};
-
-    export function request(${requestParams}) {
-      return PontCore.fetch(PontCore.getUrl("${inter.path}", params, "${method}"), ${inter.getRequestContent()});
-    }
-   `;
-  }
+   `
+	}
 }
