@@ -803,71 +803,6 @@ export class CounterReceiveVo {
   workorderId = undefined;
 }
 
-export class CreateAndEditCustomerData {
-  /** 企业简称 */
-  abbr = '';
-
-  /** 公司地址 */
-  address = '';
-
-  /** 所属地区 */
-  area = '';
-
-  /** CustomerContractForm */
-  clientContract = new CustomerContractForm();
-
-  /** 客户id */
-  clientId = undefined;
-
-  /** 企业id */
-  companyId = undefined;
-
-  /** 企业名称，系统唯一 */
-  companyName = '';
-
-  /** 法人代表 */
-  concat = '';
-
-  /** createTime */
-  createTime = '';
-
-  /** 信用代码 */
-  creditNum = '';
-
-  /** 企业id */
-  id = undefined;
-
-  /** 锁定，1=启用，2=禁用 */
-  isLock = undefined;
-
-  /** 营业执照结束时间 */
-  licenseEnd = '';
-
-  /** 营业执照 */
-  licenseNum = '';
-
-  /** 营业执照开始时间 */
-  licenseStart = '';
-
-  /** log图片地址 */
-  logUrl = '';
-
-  /** 关联业务员数组 */
-  memberList = [];
-
-  /** 最后修改人 */
-  operator = '';
-
-  /** 最后修改人id */
-  operatorId = undefined;
-
-  /** 法人代表电话 */
-  phone = '';
-
-  /** updateTime */
-  updateTime = '';
-}
-
 export class CustomerContractForm {
   /** 所属业务区域 */
   businessArea = '';
@@ -1649,6 +1584,71 @@ export class KDSignetUpdateBo {
 
   /** 字印图片地址,前端把图片文件的相对地址传回来就行 */
   signetPic = '';
+}
+
+export class NewEditCustomerInformation {
+  /** 企业简称 */
+  abbr = '';
+
+  /** 公司地址 */
+  address = '';
+
+  /** 所属地区 */
+  area = '';
+
+  /** CustomerContractForm */
+  clientContract = new CustomerContractForm();
+
+  /** 客户id */
+  clientId = undefined;
+
+  /** 企业id */
+  companyId = undefined;
+
+  /** 企业名称，系统唯一 */
+  companyName = '';
+
+  /** 法人代表 */
+  concat = '';
+
+  /** createTime */
+  createTime = '';
+
+  /** 信用代码 */
+  creditNum = '';
+
+  /** 企业id */
+  id = undefined;
+
+  /** 锁定，1=启用，2=禁用 */
+  isLock = undefined;
+
+  /** 营业执照结束时间 */
+  licenseEnd = '';
+
+  /** 营业执照 */
+  licenseNum = '';
+
+  /** 营业执照开始时间 */
+  licenseStart = '';
+
+  /** log图片地址 */
+  logUrl = '';
+
+  /** 关联业务员数组 */
+  memberList = [];
+
+  /** 最后修改人 */
+  operator = '';
+
+  /** 最后修改人id */
+  operatorId = undefined;
+
+  /** 法人代表电话 */
+  phone = '';
+
+  /** updateTime */
+  updateTime = '';
 }
 
 export class NodeUser {

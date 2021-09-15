@@ -808,71 +808,6 @@ declare namespace defs {
     workorderId?: number;
   }
 
-  export class CreateAndEditCustomerData {
-    /** 企业简称 */
-    abbr?: string;
-
-    /** 公司地址 */
-    address?: string;
-
-    /** 所属地区 */
-    area?: string;
-
-    /** CustomerContractForm */
-    clientContract?: defs.CustomerContractForm;
-
-    /** 客户id */
-    clientId?: number;
-
-    /** 企业id */
-    companyId?: number;
-
-    /** 企业名称，系统唯一 */
-    companyName?: string;
-
-    /** 法人代表 */
-    concat?: string;
-
-    /** createTime */
-    createTime?: string;
-
-    /** 信用代码 */
-    creditNum?: string;
-
-    /** 企业id */
-    id?: number;
-
-    /** 锁定，1=启用，2=禁用 */
-    isLock?: number;
-
-    /** 营业执照结束时间 */
-    licenseEnd?: string;
-
-    /** 营业执照 */
-    licenseNum?: string;
-
-    /** 营业执照开始时间 */
-    licenseStart?: string;
-
-    /** log图片地址 */
-    logUrl?: string;
-
-    /** 关联业务员数组 */
-    memberList?: Array<defs.CustomerRelatedSalesmanTable>;
-
-    /** 最后修改人 */
-    operator?: string;
-
-    /** 最后修改人id */
-    operatorId?: number;
-
-    /** 法人代表电话 */
-    phone?: string;
-
-    /** updateTime */
-    updateTime?: string;
-  }
-
   export class CustomerContractForm {
     /** 所属业务区域 */
     businessArea?: string;
@@ -1658,6 +1593,71 @@ declare namespace defs {
 
     /** 字印图片地址,前端把图片文件的相对地址传回来就行 */
     signetPic?: string;
+  }
+
+  export class NewEditCustomerInformation {
+    /** 企业简称 */
+    abbr?: string;
+
+    /** 公司地址 */
+    address?: string;
+
+    /** 所属地区 */
+    area?: string;
+
+    /** CustomerContractForm */
+    clientContract?: defs.CustomerContractForm;
+
+    /** 客户id */
+    clientId?: number;
+
+    /** 企业id */
+    companyId?: number;
+
+    /** 企业名称，系统唯一 */
+    companyName?: string;
+
+    /** 法人代表 */
+    concat?: string;
+
+    /** createTime */
+    createTime?: string;
+
+    /** 信用代码 */
+    creditNum?: string;
+
+    /** 企业id */
+    id?: number;
+
+    /** 锁定，1=启用，2=禁用 */
+    isLock?: number;
+
+    /** 营业执照结束时间 */
+    licenseEnd?: string;
+
+    /** 营业执照 */
+    licenseNum?: string;
+
+    /** 营业执照开始时间 */
+    licenseStart?: string;
+
+    /** log图片地址 */
+    logUrl?: string;
+
+    /** 关联业务员数组 */
+    memberList?: Array<defs.CustomerRelatedSalesmanTable>;
+
+    /** 最后修改人 */
+    operator?: string;
+
+    /** 最后修改人id */
+    operatorId?: number;
+
+    /** 法人代表电话 */
+    phone?: string;
+
+    /** updateTime */
+    updateTime?: string;
   }
 
   export class NodeUser {
@@ -5482,7 +5482,7 @@ declare namespace API {
 
       export function request(
         params: Params,
-        body: defs.CreateAndEditCustomerData,
+        body: defs.NewEditCustomerInformation,
         options?: any,
       ): Promise<Response>;
     }
@@ -5497,7 +5497,7 @@ declare namespace API {
         clientId?: number;
       }
 
-      export type Response = defs.CreateAndEditCustomerData;
+      export type Response = defs.NewEditCustomerInformation;
 
       export const init: Response;
 
@@ -5578,7 +5578,7 @@ declare namespace API {
 
       export function request(
         params: Params,
-        body: defs.CreateAndEditCustomerData,
+        body: defs.NewEditCustomerInformation,
         options?: any,
       ): Promise<Response>;
     }

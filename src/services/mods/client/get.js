@@ -10,7 +10,7 @@ export class Params {
   clientId;
 }
 
-export const init = new defs.CreateAndEditCustomerData();
+export const init = new defs.NewEditCustomerInformation();
 
 export function request(params, options = {}) {
   return PontCore.fetch(PontCore.getUrl('/client/get', params, 'GET'), {
